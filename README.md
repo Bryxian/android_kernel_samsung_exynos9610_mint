@@ -1,14 +1,16 @@
 ![Mint branding](https://i.ibb.co/9WV53PD/Banner-New-Dark.png)
 
-# Mint Kernel
+# FreshMint Kernel (WIP)
+_Freshen up your Galaxy. An optimized, One UI-first kernel for Samsung Galaxy devices on the Exynos 9610 and 9611 platform._
 
-_Freshen up your Galaxy. An optimized, One UI-first kernel for Samsung Galaxy devices on the Exynos 9610 platform._
+#### Common FreshMint kernel source for the Exynos 9610 and 9611 Platform
 
-#### Common Mint kernel source for the Exynos 9610 Platform
-
-Supports the following devices:
+Currently supports the following devices:
 
 - Samsung Galaxy A50 (`a50`)
+- Samsung Galaxy A50s (`a50s`)
+
+Support for other devices will come in the future.
 
 Looking for the Linux kernel readme? [Click here.](https://github.com/TenSeventy7/android_kernel_samsung_exynos9610_mint/blob/android-12.0/README_Kernel)
 
@@ -29,10 +31,12 @@ Mint Kernel will **never** be possible without the unwavering work of these awes
  - [StormBreaker Kernel](https://github.com/stormbreaker-project/kernel_xiaomi_surya) (@stormbreaker-project) and [Stratosphere Kernel](https://github.com/Stratosphere-Kernel/android_kernel_xiaomi_surya) (@Stratosphere-Kernel) for the POCO X3
  - [Artemis Kernel for the Pixel 4 XL](https://github.com/celtare21/kernel_google_coral) (@celtare21)
  - [GS101/Tensor SoC Kernel Source](https://github.com/AndreiLux/GS101) (@Google/@AndreiLux)
+ - And finally the kernel that I forked from:
+ - [Mint Kernel for the Exynos 9610](https://github.com/FreshROMs/android_kernel_samsung_exynos9610_mint/) (@PeterKnetch93/@TenSeventy7)
 
 ## About
 
-Mint is an optimized kernel source based on Samsung's open-source kernel drops of the Galaxy A50. Additional features include:
+FreshMint is bassically just Mint kernel, a optimized kernel source with A50s support and Exynos 9611 support (Updates will come in the near future I hope) added which itself is based on Samsung's open-source kernel drops of the Galaxy A50. Additional features include:
 
  - Built with LLVM/Clang (`proton-clang`) 13
  - Built with Link-Time Optimizations (LTO) enabled
@@ -81,6 +85,7 @@ Once you have the prerequisites installed, simply run this on the Terminal.
 
 ```
 - a50 # For Samsung Galaxy A50
+- a50s # For Samsung Galaxy A50s
 ```
 
 More options are available on the script by executing `./build.sh --help|-h`. The script will download all it needs (including the toolchain) and builds a new kernel build for you.
