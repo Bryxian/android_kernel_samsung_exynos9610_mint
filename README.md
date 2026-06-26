@@ -16,7 +16,7 @@ Looking for the Linux kernel readme? [Click here.](https://github.com/TenSeventy
 
 ## Source References and Contributors
 
-Mint Kernel will **never** be possible without the unwavering work of these awesome people. I have tried my best to keep their authorships on the commit history. Thank you very much!
+FreshMint Kernel will **never** be possible without the unwavering work of these awesome people. I have tried my best to keep their authorships on the commit history. Thank you very much!
 
  - [Cruel Kernel for the Galaxy S10/Note10](https://github.com/CruelKernel/samsung-exynos9820/) (@evdenis)
  - [GaltsGulch for the OnePlus 7 series](https://github.com/RealJohnGalt/GaltsGulch-sm8150) (@RealJohnGalt)
@@ -31,7 +31,7 @@ Mint Kernel will **never** be possible without the unwavering work of these awes
  - [StormBreaker Kernel](https://github.com/stormbreaker-project/kernel_xiaomi_surya) (@stormbreaker-project) and [Stratosphere Kernel](https://github.com/Stratosphere-Kernel/android_kernel_xiaomi_surya) (@Stratosphere-Kernel) for the POCO X3
  - [Artemis Kernel for the Pixel 4 XL](https://github.com/celtare21/kernel_google_coral) (@celtare21)
  - [GS101/Tensor SoC Kernel Source](https://github.com/AndreiLux/GS101) (@Google/@AndreiLux)
- - And finally the kernel that I forked from:
+   And finally the kernel that I forked from:
  - [Mint Kernel for the Exynos 9610](https://github.com/FreshROMs/android_kernel_samsung_exynos9610_mint/) (@PeterKnetch93/@TenSeventy7)
 
 ## About
