@@ -8,10 +8,11 @@
 #
 # =========================================
 #
-#  Minty - The kernel build script for Mint
+#  Minty - The kernel build script for FreshMint
 #  The Fresh Project
 #  Copyright (C) 2019-2021 TenSeventy7
 #                2024-2025 PeterKnecht93
+#                2026 idkwhat™
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -300,14 +301,22 @@ BUILD_PACKAGE() {
         echo "ro.mint.droid.android=$BUILD_ANDROID_PLATFORM"
         echo "ro.mint.droid.platform=11-$BUILD_ANDROID_PLATFORM"
 
-        # Device support
-        echo "ro.mint.device.name1=${BUILD_DEVICE_NAME}"
-        echo "ro.mint.device.name2=${BUILD_DEVICE_NAME}xx"
-        echo "ro.mint.device.name3=${BUILD_DEVICE_NAME}dd"
-        echo "ro.mint.device.name4=${BUILD_DEVICE_NAME}ser"
-        echo "ro.mint.device.name5=${BUILD_DEVICE_NAME}ltn"
-        [ "$BUILD_DEVICE_NAME" == "a50" ] && echo "ro.mint.device.name6=a505f"
-    } >> "$TMP_DIR/mint.prop"
+	# Device support
+	{
+		echo "ro.mint.device.name1=${BUILD_DEVICE_NAME}"
+		echo "ro.mint.device.name2=${BUILD_DEVICE_NAME}xx"
+		echo "ro.mint.device.name3=${BUILD_DEVICE_NAME}dd"
+		echo "ro.mint.device.name4=${BUILD_DEVICE_NAME}ser"
+		echo "ro.mint.device.name5=${BUILD_DEVICE_NAME}ltn"
+
+		[ "$BUILD_DEVICE_NAME" = "a50" ] && echo "ro.mint.device.name6=a505f"
+		[ "$BUILD_DEVICE_NAME" = "a50s" ] && {
+			echo "ro.mint.device.name6=a507f"
+			echo "ro.mint.device.name7=a507fn"
+			echo "ro.mint.device.name8=a507g"
+			echo "ro.mint.device.name9=a5070"
+			}
+		} >> "$TMP_DIR/mint.prop"
 
     # Create zip file
     cd "$TMP_DIR" && zip -9 -r "$OUT_DIR/$FILE_NAME" ./* 2>&1 | sed 's/^/     /'
@@ -335,26 +344,27 @@ show_usage() {
 	script_echo " "
 	script_echo "Supported devices:"
 	script_echo "  a50 (Samsung Galaxy A50)"
+        script_echo "  a50s (Samsung Galaxy A50s)"
 	exit_script
 }
 # ]
 
 script_echo " "
 script_echo "==============================================="
-script_echo "                       _       _               "
-script_echo "                 /\/\ (_)_ __ | |_             "
-script_echo "                /    \| | '_ \| __|            "
-script_echo "               / /\/\ \ | | | | |_             "
-script_echo "               \/    \/_|_| |_|\__|            "
+script_echo "  _____              _     __  __ _       _    "
+script_echo " |  ___| __ ___  ___| |__ |  \/  (_)_ __ | |_  "
+script_echo " | |_ | '__/ _ \/ __| '_ \| |\/| | | '_ \| __| "
+script_echo " |  _|| | |  __/\__ \ | | | |  | | | | | | |_  "
+script_echo " |_|  |_|  \___||___/_| |_|_|  |_|_|_| |_|\__| "
 script_echo "                                               "
 script_echo "==============================================="
-script_echo "           Minty - Kernel Build Script         "
+script_echo "        FreshMint - Kernel Build Script        "
 script_echo "            Part of The Fresh Project          "
-script_echo "       by TenSeventy7 - Licensed in GPLv3      "
+script_echo "                  by idkwhat™                  "
+script_echo "  Original by TenSeventy7 - Licensed in GPLv3  "
 script_echo "                                               "
-script_echo "       Originally built for Project ShadowX    "
+script_echo "              Supports A50 & A50s              "
 script_echo "==============================================="
-script_echo " "
 
 # Process arguments
 POSITIONAL=()
