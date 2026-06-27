@@ -283,40 +283,40 @@ BUILD_PACKAGE() {
         sed -i '/product/d' "$TOP/tools/make/ramdisk/fstab.exynos9610"
     fi
 
-    # Generate manifest
-    {
-        echo "ro.mint.build.date=$BUILD_DATE"
-        echo "ro.mint.build.branch=$BUILD_KERNEL_BRANCH"
-        echo "ro.mint.build.ksu=$BUILD_KERNEL_KSU"
-        echo "ro.mint.droid.device=${BUILD_DEVICE_NAME^}"
-        echo "ro.mint.droid.variant=$MINT_VARIANT"
+# Generate manifest
+{
+    echo "ro.mint.build.date=$BUILD_DATE"
+    echo "ro.mint.build.branch=$BUILD_KERNEL_BRANCH"
+    echo "ro.mint.build.ksu=$BUILD_KERNEL_KSU"
+    echo "ro.mint.droid.device=${BUILD_DEVICE_NAME^}"
+    echo "ro.mint.droid.variant=$MINT_VARIANT"
 
-        if [[ $BUILD_KERNEL_BRANCH == mainline ]]; then
-            echo "ro.mint.droid.beta=false"
-        else
-            echo "ro.mint.droid.beta=true"
-        fi
-        echo "ro.mint.build.version=$MINT_VERSION"
+    if [[ $BUILD_KERNEL_BRANCH == mainline ]]; then
+        echo "ro.mint.droid.beta=false"
+    else
+        echo "ro.mint.droid.beta=true"
+    fi
 
-        echo "ro.mint.droid.android=$BUILD_ANDROID_PLATFORM"
-        echo "ro.mint.droid.platform=11-$BUILD_ANDROID_PLATFORM"
+    echo "ro.mint.build.version=$MINT_VERSION"
+    echo "ro.mint.droid.android=$BUILD_ANDROID_PLATFORM"
+    echo "ro.mint.droid.platform=11-$BUILD_ANDROID_PLATFORM"
 
-	# Device support
-	{
-		echo "ro.mint.device.name1=${BUILD_DEVICE_NAME}"
-		echo "ro.mint.device.name2=${BUILD_DEVICE_NAME}xx"
-		echo "ro.mint.device.name3=${BUILD_DEVICE_NAME}dd"
-		echo "ro.mint.device.name4=${BUILD_DEVICE_NAME}ser"
-		echo "ro.mint.device.name5=${BUILD_DEVICE_NAME}ltn"
+    echo "ro.mint.device.name1=${BUILD_DEVICE_NAME}"
+    echo "ro.mint.device.name2=${BUILD_DEVICE_NAME}xx"
+    echo "ro.mint.device.name3=${BUILD_DEVICE_NAME}dd"
+    echo "ro.mint.device.name4=${BUILD_DEVICE_NAME}ser"
+    echo "ro.mint.device.name5=${BUILD_DEVICE_NAME}ltn"
 
-		[ "$BUILD_DEVICE_NAME" = "a50" ] && echo "ro.mint.device.name6=a505f"
-		[ "$BUILD_DEVICE_NAME" = "a50s" ] && {
-			echo "ro.mint.device.name6=a507f"
-			echo "ro.mint.device.name7=a507fn"
-			echo "ro.mint.device.name8=a507g"
-			echo "ro.mint.device.name9=a5070"
-			}
-		} >> "$TMP_DIR/mint.prop"
+    if [[ $BUILD_DEVICE_NAME == a50 ]]; then
+        echo "ro.mint.device.name6=a505f"
+    elif [[ $BUILD_DEVICE_NAME == a50s ]]; then
+        echo "ro.mint.device.name6=a507f"
+        echo "ro.mint.device.name7=a507fn"
+        echo "ro.mint.device.name8=a507g"
+        echo "ro.mint.device.name9=a5070"
+    fi
+} > "$TMP_DIR/mint.prop"
+		   
 
     # Create zip file
     cd "$TMP_DIR" && zip -9 -r "$OUT_DIR/$FILE_NAME" ./* 2>&1 | sed 's/^/     /'
